@@ -1,4 +1,4 @@
-import { CSSObject } from 'create-emotion';
+// import { CSSObject } from 'create-emotion';
 
 export interface CommentEntity {
   avatarUrl: string;

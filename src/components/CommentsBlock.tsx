@@ -57,12 +57,12 @@ class CommentsBlock extends React.Component<Props, State> {
     return (
       <CBContext.Provider value={this.state.styles}>
         <div>
-          <CommentsList comments={comments} reactRouter={reactRouter} />
           {isLoggedIn ? (
             <CommentForm onSubmit={onSubmit} />
           ) : (
             <CommentSignIn href={signinUrl} reactRouter={reactRouter} />
           )}
+          <CommentsList comments={comments} reactRouter={reactRouter} />
         </div>
       </CBContext.Provider>
     );
