@@ -2,6 +2,7 @@ import { css } from 'emotion';
 import * as React from 'react';
 import { CssBtn } from '../styles/Btn.css';
 import { CssTextarea } from '../styles/Textarea.css';
+import { CssForm } from '../styles/Form.css';
 import { CBContext } from './CommentsBlock';
 
 export interface Props {
@@ -29,7 +30,7 @@ class CommentForm extends React.Component<Props, State> {
         {styles => {
           const btnCn = css(styles.btn(CssBtn));
           return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} className={css(styles.form(CssForm))}>
               <textarea
                 className={css(styles.textarea(CssTextarea))}
                 name="comment-text"

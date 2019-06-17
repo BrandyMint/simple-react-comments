@@ -8,6 +8,7 @@ const defaultStyles = {
   btn: base => ({ ...base }),
   comment: base => ({ ...base }),
   textarea: base => ({ ...base }),
+  form: base => ({ ...base})
 };
 
 export const CBContext = React.createContext<StylesEntity>(defaultStyles);

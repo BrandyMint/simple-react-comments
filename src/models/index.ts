@@ -17,4 +17,5 @@ export interface StylesEntity {
   btn?(base: any): any;
   comment?(base: any): any;
   textarea?(base: any): any;
+  form?(base: any): any;
 }
