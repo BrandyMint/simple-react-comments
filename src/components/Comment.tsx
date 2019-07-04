@@ -7,14 +7,15 @@ import Link from './Link';
 
 export interface Props {
   comment: CommentEntity;
+  showAsIs?: boolean;
   reactRouter: boolean;
 }
 
-const Comment: React.StatelessComponent<Props> = ({ comment, reactRouter }) => {
-  const { authorUrl, avatarUrl, createdAt, fullName } = comment;
+const Comment: React.StatelessComponent<Props> = ({ comment, reactRouter, showAsIs }) => {
+  const { text, authorUrl, avatarUrl, createdAt, fullName } = comment;
   const textHtml = (
     <React.Fragment>
-      {comment.text.split('\n').map(
+      {text.split('\n').map(
         (chunk, inx, arr) =>
           inx !== arr.length - 1 ? (
             <React.Fragment key={chunk + inx}>
@@ -50,13 +51,20 @@ const Comment: React.StatelessComponent<Props> = ({ comment, reactRouter }) => {
               <div className={`${cn}__time`}>
                 {createdAt.toLocaleDateString()}
               </div>
-              <div className={`${cn}__content`}>{textHtml}</div>
+              { showAsIs ?
+                <div className={`${cn}__content`} dangerouslySetInnerHTML={{ __html: text }}/> :
+                <div className={`${cn}__content`}>{textHtml}</div>
+              }
             </div>
           </div>
         );
       }}
     </CBContext.Consumer>
   );
+};
+
+Comment.defaultProps = {
+  showAsIs: true
 };
 
 export default Comment;
